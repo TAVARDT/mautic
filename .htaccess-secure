@@ -1,0 +1,40 @@
+# ----------------------------------------------------------------------
+# TAVARDT Elite Mautic Security Rules (Symfony Architecture)
+# ----------------------------------------------------------------------
+
+# 1. Disable Directory Listing
+Options -Indexes
+
+# 2. Block access to sensitive Mautic specific directories
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^app/config/ - [F,L]
+RewriteRule ^var/logs/ - [F,L]
+RewriteRule ^var/cache/ - [F,L]
+RewriteRule ^var/spool/ - [F,L]
+</IfModule>
+
+# 3. Block HTTP Trace/Track methods (Prevents XST attacks)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
+RewriteRule .* - [F]
+</IfModule>
+
+# 4. Restrict access to dot files (e.g., .env, .git)
+<FilesMatch "^\.">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# 5. Secure headers for marketing endpoints
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+    # Note: Frame-Options is omitted here because Mautic landing pages
+    # sometimes need to be iframe-embedded, configure selectively per path.
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Default Mautic Routing Rules (Place below this line)
+# ----------------------------------------------------------------------
