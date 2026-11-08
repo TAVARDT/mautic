@@ -3,13 +3,14 @@
 <div align="center">
   <p>Elite B2B Security & Scaling Configurations for Mautic Automation Infrastructure.</p>
   <p>
-    <a href="#-english">🇺🇸 English</a> | 
-    <a href="#-português">🇧🇷 Português</a>
+    <a href="#english">🇺🇸 English</a> | 
+    <a href="#português">🇧🇷 Português</a>
   </p>
 </div>
 
 ---
 
+<a id="english"></a>
 ## 🇺🇸 English
 
 ### High-Performance Mautic Marketing Automation
@@ -31,6 +32,7 @@ Looking for elite B2B infrastructure and high-ticket digital engineering?
 
 ---
 
+<a id="português"></a>
 ## 🇧🇷 Português
 
 ### Segurança e Escalabilidade para Mautic
